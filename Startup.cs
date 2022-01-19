@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace DiscordBot
 {
-    public class StartUp
+    public class Startup
     {
         public IConfigurationRoot Configuration { get; }
-        public StartUp(string[] args)
+        public Startup(string[] args)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
@@ -17,7 +17,7 @@ namespace DiscordBot
 
         public static async Task RunAsync(string[] args)
         {
-            var startup = new StartUp(args);
+            var startup = new Startup(args);
             await startup.StartAsync();
     }
 }
