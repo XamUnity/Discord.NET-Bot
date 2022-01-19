@@ -19,5 +19,17 @@ namespace DiscordBot
         {
             var startup = new Startup(args);
             await startup.StartAsync();
+        }
+    
+        public async Task RunAsync()
+        {
+            var services = new ServiceCollection();
+            ConfigureServices(services);
+
+            var provider = services.BuildServiceProvider();
+            provider.GetRequiredService<CommandHandler>();
+            await provider.GetRequiredService<StartupService>().StartAsync();
+            await Task.Delay(-1);
+        }
     }
 }
